@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%block content%}
+<form method="POST">
+    {{form.hidden_tag()}}
+    {{ form.name.label }} {{ form.name() }}<br>
+    {{ form.address.label }} {{ form.address() }}<br>
+    {{ form.number.label }} {{ form.number() }}<br>
+    {{ form.city.label }} {{ form.city() }}<br>
+    {{ form.state.label }} {{ form.state() }}<br>
+    {{ form.country_code.label }} {{ form.country_code() }}<br>
+    {{ form.phone.label }} {{ form.phone() }}<br>
+    {{ form.email.label }} {{ form.email() }}<br>
+    {{ form.username.label }} {{ form.username() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
+    {{ form.submit() }}
+</form>
+{%endblock%}
