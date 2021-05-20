@@ -1,10 +1,11 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Email, EqualTo, NumberRange
 from wtforms import ValidationError
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Senha', validators=[DataRequired()])
     submit = SubmitField('Log in')
 
@@ -15,8 +16,8 @@ class RegistrationForm(FlaskForm):
     city = StringField('Cidade', validators=[DataRequired()])
     state = StringField('Estado', validators=[DataRequired()])
     country_code = IntegerField('CEP', validators=[DataRequired()])
-    phone = IntegerField('Telefone', validators=[NumberRange(min=0, max=11)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    phone = IntegerField('Telefone', validators=[DataRequired(), NumberRange(min=0, max=11)])
+    email = EmailField('Email', validators=[DataRequired(), Email()])
     username = StringField('Usuário', validators=[DataRequired()])
     password = PasswordField('Senha', validators=[DataRequired(), EqualTo('pass_confirm', message = 'Passwords Must Match')])
     pass_confirm = PasswordField('Confirme sua senha', validators=[DataRequired(), EqualTo('password')])

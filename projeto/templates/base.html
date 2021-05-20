@@ -15,12 +15,14 @@
   </li>
     {% if current_user.is_authenticated %}
     <li class="nav-link"><a href="{{ url_for('logout') }}">Log Out</a></li>
-    <li class="nav-link"><a href="{{ url_for('welcome_user') }}">Welcome</a></li>
+      {% if current_user.is_authenticated and current_user.email != 'one@one.com' %}
+      <li class="nav-link"><a href="{{ url_for('welcome_user') }}">Welcome</a></li>
+      {%endif%}
     {% else %}
     <li class="nav-link"><a href="{{ url_for('register') }}">Cadastro</a></li>
     <li class="nav-link"><a href="{{ url_for('login') }}">Log In</a></li>
 
-      {%endif%}
+    {%endif%}
     </ul>
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
